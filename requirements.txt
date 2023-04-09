@@ -1,0 +1,5 @@
+black
+apscheduler
+fastapi[all]
+loguru
+chinesecalendar
