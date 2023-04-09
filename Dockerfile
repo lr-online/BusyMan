@@ -13,6 +13,15 @@ RUN pip config set global.index-url https://pypi.doubanio.com/simple
 # 安装项目依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
+# 安装时区数据
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tzdata \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+
 # 暴露项目端口
 EXPOSE 80
 
