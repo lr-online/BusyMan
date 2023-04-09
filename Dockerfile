@@ -1,5 +1,5 @@
 # 使用 Python 3.11 作为基础镜像
-FROM python:3.11
+FROM python:3.11.0-buster
 
 # 设置工作目录
 WORKDIR /app
@@ -7,20 +7,10 @@ WORKDIR /app
 # 将当前目录下的所有文件复制到容器中的 /app 目录下
 COPY . /app
 
-# 设置 pip 的豆瓣源
-RUN pip config set global.index-url https://pypi.doubanio.com/simple
-
 # 安装项目依赖
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 安装时区数据
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends tzdata \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# 设置时区
-ENV TZ=Asia/Shanghai
+RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.doubanio.com/simple
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' > /etc/timezone
 
 # 暴露项目端口
 EXPOSE 80
