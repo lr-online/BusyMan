@@ -19,7 +19,13 @@ def weekly_report_reminder():
 1⃣️请各位老师开始更新及新建 [TAPD任务](https://www.tapd.cn/my_worktable/index/todo) 
 2⃣️请各位老师向组长汇报工作内容
 
->【任务】
+>【本周任务进展】
+>   1、
+>   2、
+>   3、
+
+
+>【下周任务】
 >   1、
 >   2、
 >   3、
